@@ -71,7 +71,7 @@ Ping explores how software can recreate that feeling through meaningful conversa
 Project documentation is maintained in the `docs/` directory and evolves alongside the product.
 
 - Engineering Journal
-- Roadmap *(coming soon)*
+- Roadmap 
 - Architecture Decision Records *(coming soon)*
 - Troubleshooting Guide *(coming soon)*
 
