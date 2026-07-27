@@ -8,53 +8,91 @@ Built with **Kotlin** and **Jetpack Compose**, Ping is developed using productio
 
 ---
 
-## ✨ Vision
+# ✨ Vision
 
 People don't repeatedly open messaging apps because they love chat bubbles.
 
 They return because they anticipate something meaningful waiting for them.
 
-Ping is built around recreating that feeling in a healthier and more intentional way.
- 
+Ping is built around recreating that feeling in a healthier, calmer, and more intentional way.
+
 ---
-## 💡 Why Ping?
+
+# 💡 Why Ping?
 
 Messaging apps keep us coming back because every notification carries uncertainty and anticipation.
 
-Ping explores how software can recreate that feeling through meaningful conversations, reflection, and AI—without relying on addictive feeds or vanity metrics.
+Ping explores how software can recreate that feeling through meaningful conversations, reflection, and AI—without relying on addictive feeds, endless scrolling, or vanity metrics.
 
 ---
 
-## 🚀 Current Status
+# 🚀 Project Status
 
 **Stage:** 🚧 MVP Development
 
-### Completed
+**Current Version:** `v0.1.0`
 
-- Project initialization
-- Android Studio setup
-- Git & GitHub integration
-- Engineering documentation
+### ✅ Completed
 
-### In Progress
-
+- Project Initialization
+- Android Studio Setup
+- Git & GitHub Integration
+- Engineering Documentation
 - Splash Screen
 - Home Screen
-- Chat Experience
+- Navigation Architecture
+- Navigation Compose Integration
+- Automatic Splash → Home Navigation
+- Splash Animation
+- APK Generation
+- Physical Device Testing
+
+### 🚧 Current Focus
+
+**Issue #3 — Home Screen Foundation**
+
+### 🔜 Upcoming
+
+- Home Screen UI
+- Bottom Navigation
+- Conversation Feed
+- User Profile
+- Local Data Storage
+- AI Integration
 
 ---
 
-## 🛠 Tech Stack
+# 🏆 Latest Milestone
 
-### Current
+Ping now delivers its **first complete user journey**:
+
+```text
+Launch App
+      ↓
+Splash Screen
+      ↓
+Smooth Transition
+      ↓
+Home Screen
+```
+
+The application has been successfully tested on both the Android Emulator and a physical Android device.
+
+---
+
+# 🛠 Tech Stack
+
+## Current
 
 - Kotlin
 - Jetpack Compose
 - Material 3
-- Git & GitHub
+- Navigation Compose
+- Git
+- GitHub
 - Android Studio
 
-### Planned
+## Planned
 
 - MVVM
 - StateFlow
@@ -66,51 +104,83 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 ---
 
-## 📂 Project Documentation
+# 📂 Documentation
 
-Project documentation is maintained in the `docs/` directory and evolves alongside the product.
+Project documentation evolves alongside the product and is maintained inside the `docs/` directory.
+
+Current documentation includes:
 
 - Engineering Journal
-- Roadmap 
-- Architecture Decision Records *(coming soon)*
-- Troubleshooting Guide *(coming soon)*
+- Product Roadmap
+
+Coming soon:
+
+- Architecture Decision Records (ADR)
+- Troubleshooting Guide
+- Android Engineering Notes
+- Changelog
 
 ---
-## 🎯 Project Philosophy
 
-Build simple.
+# 🎯 Development Philosophy
 
-Ship often.
+Ping is built around one simple engineering principle:
 
-Document decisions.
+> **Build small. Ship often. Document everything. Improve continuously.**
 
-Improve continuously.
- 
+Every feature follows a structured workflow:
+
+```text
+Idea
+   ↓
+GitHub Issue
+   ↓
+Implementation
+   ↓
+Testing
+   ↓
+Documentation
+   ↓
+Release
+```
+
 ---
-## 🏗 Engineering Principles
 
-Ping follows a production-oriented engineering workflow with emphasis on:
+# 🏗 Engineering Principles
+
+Ping follows production-oriented Android engineering practices with emphasis on:
 
 - Issue-driven development
+- Incremental feature delivery
 - Meaningful Git history
-- Clear documentation
-- Scalable architecture
+- Clean Architecture
+- Scalable project structure
+- Documentation-first development
 - Offline-first design
 
 ---
 
-## 🤝 Connect
+# 📚 Learning Journey
 
-- GitHub: https://github.com/Mdsahil01
-- LinkedIn: https://www.linkedin.com/in/mdsahil01
+Ping is not only a product but also a journey toward becoming a professional Android Engineer.
 
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
+Each completed feature contributes to learning modern Android development, software architecture, version control, testing, and engineering best practices.
 
 ---
 
-**Ping** is actively evolving. Every milestone, feature, and engineering decision is built one step at a time.
+# 🤝 Connect
+
+- **GitHub:** https://github.com/Mdsahil01
+- **LinkedIn:** https://www.linkedin.com/in/mdsahil01
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+> **Ping is actively evolving.**
+>
+> Every feature, milestone, engineering decision, and lesson learned is built one issue at a time.
