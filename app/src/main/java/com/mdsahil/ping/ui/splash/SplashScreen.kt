@@ -2,6 +2,8 @@ package com.mdsahil.ping.ui.splash
 
 import android.R.attr.text
 import android.window.SplashScreen
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
@@ -16,18 +18,63 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.mdsahil.ping.R
+import com.mdsahil.ping.ui.navigation.Routes
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
-fun SplashScreen(){
+fun SplashScreen(
+    navController: NavController
+){
+    val scale = remember { Animatable(0.92f) }
+    val alpha = remember { Animatable(0f) }
+    LaunchedEffect(Unit) {
+
+        launch {
+            alpha.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(700)
+            )
+        }
+
+        launch {
+            scale.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(700)
+            )
+        }
+
+
+
+
+
+        delay(2000)
+
+        navController.navigate(Routes.HOME) {
+            popUpTo(Routes.SPLASH) {
+                inclusive = true
+            }
+        }
+    }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(Color.Black)
+            .graphicsLayer(
+                alpha = alpha.value,
+                scaleX = scale.value,
+                scaleY = scale.value
+            ),
         contentAlignment = Alignment.Center
+
     ){
         Column(
             modifier = Modifier.offset(y = (-32).dp),
@@ -55,8 +102,3 @@ fun SplashScreen(){
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun SplashScreenPreview(){
-    SplashScreen()
-}

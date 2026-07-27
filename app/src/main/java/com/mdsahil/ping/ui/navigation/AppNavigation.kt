@@ -16,7 +16,7 @@ fun AppNavigation(){
         startDestination = Routes.SPLASH
     ){
         composable(Routes.SPLASH){
-            SplashScreen()
+            SplashScreen(navController)
         }
 
         composable(Routes.HOME){
