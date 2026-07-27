@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mdsahil.ping.ui.navigation.AppNavigation
 import com.mdsahil.ping.ui.splash.SplashScreen
 import com.mdsahil.ping.ui.theme.PingTheme
 
@@ -21,8 +22,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             PingTheme {
 
-                SplashScreen()
 
+                AppNavigation()
                 }
             }
         }
