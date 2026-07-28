@@ -57,7 +57,7 @@ fun SplashScreen(
 
         delay(2000)
 
-        navController.navigate(Routes.HOME) {
+        navController.navigate(Routes.ONBOARDING) {
             popUpTo(Routes.SPLASH) {
                 inclusive = true
             }

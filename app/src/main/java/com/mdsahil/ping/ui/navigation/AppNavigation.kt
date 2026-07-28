@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mdsahil.ping.ui.home.HomeScreen
+import com.mdsahil.ping.ui.onboarding.OnboardingScreen
 import com.mdsahil.ping.ui.splash.SplashScreen
 
 @Composable
@@ -21,6 +22,9 @@ fun AppNavigation(){
 
         composable(Routes.HOME){
             HomeScreen()
+        }
+        composable(Routes.ONBOARDING) {
+            OnboardingScreen()
         }
 
     }
