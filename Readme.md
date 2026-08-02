@@ -52,6 +52,17 @@ Ping explores how software can recreate that feeling through meaningful conversa
 - Android Emulator Testing
 - Physical Device Testing
 
+
+## 📱 Current Progress
+
+### Splash Screen
+
+![Splash Screen](docs/screenshots/day5_splash.png)
+
+### Conversation-First Onboarding
+
+![Onboarding](docs/screenshots/day5_onboarding.png))
+
 ### 🚧 Current Focus
 
 **Issue #5 — Build the Welcome Experience**
