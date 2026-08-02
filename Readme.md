@@ -57,11 +57,11 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 ### Splash Screen
 
-![Splash Screen](docs/screenshots/day5_splash.png)
+![Splash Screen](screenshots/day5_splash.png)
 
 ### Conversation-First Onboarding
 
-![Onboarding](docs/screenshots/day5_onboarding.png))
+![Onboarding](screenshots/day5_onboarding.png)
 
 ### 🚧 Current Focus
 
