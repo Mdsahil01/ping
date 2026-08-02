@@ -30,7 +30,7 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 **Stage:** 🚧 MVP Development
 
-**Current Version:** `v0.1.0`
+**Current Version:** `v0.2.0`
 
 ### ✅ Completed
 
@@ -39,24 +39,33 @@ Ping explores how software can recreate that feeling through meaningful conversa
 - Git & GitHub Integration
 - Engineering Documentation
 - Splash Screen
-- Home Screen
+- Conversation-First Onboarding
+- Ping Conversation Identity
 - Navigation Architecture
 - Navigation Compose Integration
-- Automatic Splash → Home Navigation
-- Splash Animation
+- Message Bubble Component
+- Typing Indicator Component
+- Conversation Input Component
+- Dark Theme
+- Launcher Branding
 - APK Generation
+- Android Emulator Testing
 - Physical Device Testing
 
 ### 🚧 Current Focus
 
-**Issue #3 — Home Screen Foundation**
+**Issue #5 — Build the Welcome Experience**
+
 
 ### 🔜 Upcoming
 
-- Home Screen UI
-- Bottom Navigation
-- Conversation Feed
-- User Profile
+- Welcome Experience
+- Home Screen
+- Reflection Conversations
+- Future Self Conversations
+- Search
+- Profile
+- Settings
 - Local Data Storage
 - AI Integration
 
@@ -64,20 +73,23 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 # 🏆 Latest Milestone
 
-Ping now delivers its **first complete user journey**:
+Ping now delivers its first complete conversation-first onboarding experience.
 
 ```text
 Launch App
       ↓
 Splash Screen
       ↓
-Smooth Transition
+Conversation-First Onboarding
       ↓
-Home Screen
+Personalized Welcome
+      ↓
+(Home Screen — Next Milestone)
 ```
 
-The application has been successfully tested on both the Android Emulator and a physical Android device.
+The onboarding now establishes Ping's identity through thoughtful conversation rather than traditional setup screens.
 
+The experience has been tested successfully on both the Android Emulator and a physical Android device.
 ---
 
 # 🛠 Tech Stack
@@ -88,9 +100,9 @@ The application has been successfully tested on both the Android Emulator and a 
 - Jetpack Compose
 - Material 3
 - Navigation Compose
+- Android Studio
 - Git
 - GitHub
-- Android Studio
 
 ## Planned
 
@@ -112,6 +124,7 @@ Current documentation includes:
 
 - Engineering Journal
 - Product Roadmap
+-  GitHub Issue Documentation
 
 Coming soon:
 
@@ -148,18 +161,48 @@ Release
 
 # 🏗 Engineering Principles
 
-Ping follows production-oriented Android engineering practices with emphasis on:
+Ping is developed using production-oriented Android engineering practices with emphasis on:
 
 - Issue-driven development
+- Conversation-first product design
 - Incremental feature delivery
 - Meaningful Git history
+- Component reusability
 - Clean Architecture
-- Scalable project structure
 - Documentation-first development
-- Offline-first design
-
+- Continuous testing
 ---
 
+
+# 🌱 Product Principles
+
+Ping is guided by a set of product principles that shape every interaction.
+
+- The user leads the conversation.
+- Curious, never intrusive.
+- Presence over productivity.
+- Every conversation should feel human.
+- Respect human behavior.
+- Less is more.
+- Respect silence.
+- Remember naturally.
+- Every message should have intention.
+- Build trust before features.
+
+
+# 🗺 MVP Roadmap
+
+- [x] Splash Screen
+- [x] Conversation-First Onboarding
+- [x] Establish Ping Conversation Identity
+- [ ] Welcome Experience
+- [ ] Home Screen
+- [ ] Reflection Conversations
+- [ ] Future Self Conversations
+- [ ] Search
+- [ ] Profile
+- [ ] Settings
+- 
 # 📚 Learning Journey
 
 Ping is not only a product but also a journey toward becoming a professional Android Engineer.
