@@ -53,16 +53,29 @@ Ping explores how software can recreate that feeling through meaningful conversa
 - Physical Device Testing
 
 
-## 📱 Current Progress
+### 📱 Current Progress
 
-### Splash Screen
+<table>
+<tr>
+<td align="center"><b>Splash Screen</b></td>
+<td align="center"><b>Conversation-First Onboarding</b></td>
+</tr>
 
-![Splash Screen](screenshots/day5_splash.png)
+<tr>
+<td>
+<a href="screenshots/day5_splash.png">
+<img src="screenshots/day5_splash.png" width="280"/>
+</a>
+</td>
 
-### Conversation-First Onboarding
-
-![Onboarding](screenshots/day5_onboarding.png)
-
+<td>
+<a href="screenshots/day5_onboarding.png">
+<img src="screenshots/day5_onboarding.png" width="280"/>
+</a>
+</td>
+</tr>
+</table>
+ 
 ### 🚧 Current Focus
 
 **Issue #5 — Build the Welcome Experience**
