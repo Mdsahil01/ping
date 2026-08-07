@@ -135,7 +135,7 @@ fun OnboardingQuestion(
             Image(
                 painter = painterResource(R.drawable.ping_icon),
                 contentDescription = "Ping",
-                modifier = Modifier.size(56.dp),
+                modifier = Modifier.size(48.dp),
                 contentScale = ContentScale.Fit
             )
 
@@ -146,14 +146,14 @@ fun OnboardingQuestion(
                 Text(
                     text = "Ping",
                     color = MaterialTheme.colorScheme.onBackground,
-                    fontSize = 28.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.SemiBold
                 )
 
                 Text(
                     text = "Your AI companion",
                     color = MaterialTheme.colorScheme.secondary,
-                    fontSize = 15.sp
+                    fontSize = 13.sp
                 )
             }
         }
@@ -221,6 +221,41 @@ fun OnboardingQuestion(
 fun WelcomeMessage(
     name: String
 ) {
+    var showTyping1 by remember { mutableStateOf(true) }
+    var showMessage1 by remember { mutableStateOf(false) }
+
+    var showTyping2 by remember { mutableStateOf(false) }
+    var showMessage2 by remember { mutableStateOf(false) }
+
+    var showTyping3 by remember { mutableStateOf(false) }
+    var showMessage3 by remember { mutableStateOf(false) }
+
+    var showButton by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+
+        delay(800)
+        showTyping1 = false
+        showMessage1 = true
+
+        delay(700)
+        showTyping2 = true
+
+        delay(800)
+        showTyping2 = false
+        showMessage2 = true
+
+        delay(700)
+        showTyping3 = true
+
+        delay(800)
+        showTyping3 = false
+        showMessage3 = true
+
+        delay(500)
+        showButton = true
+    }
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -272,56 +307,78 @@ fun WelcomeMessage(
                         modifier = Modifier.padding(start = 12.dp, bottom = 6.dp)
                     )
 
-                    MessageBubble(
-                        message = "Nice to meet you, $name! 👋"
-                    )
+            AnimatedVisibility(showTyping1) {
+                TypingIndicator()
+            }
+
+            AnimatedVisibility(showMessage1) {
+                MessageBubble(
+                    message = "Nice to meet you, $name! 👋"
+                )
+            }
 
                     Spacer(modifier = Modifier.height(4.dp))
 
-                    MessageBubble(
-                        message = "I'm Ping."
-                    )
+            AnimatedVisibility(showTyping2) {
+                TypingIndicator()
+            }
+
+            AnimatedVisibility(showMessage2) {
+
+                MessageBubble(
+                    message = "I'm Ping."
+                )
+            }
 
                     Spacer(modifier = Modifier.height(4.dp))
 
-                    MessageBubble(
-                        message = "I'm here whenever you wantto talk,\n" +
+            AnimatedVisibility(showTyping3) {
+                TypingIndicator()
+            }
 
-                                "reflect, or just think out loud."
-                    )
+            AnimatedVisibility(showMessage3) {
 
+                MessageBubble(
+                    message = "I'm here whenever you wantto talk,\n" +
+                            "reflect, or just think out loud."
+                )
+            }
             Spacer(modifier = Modifier.weight(1f))
 
-            Button(
-                onClick = { },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .navigationBarsPadding()
-                    .padding(bottom = 16.dp),
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+            AnimatedVisibility(visible =  showButton) {
+
+                Button(
+                    onClick = {
+                        // Navigation later
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(72.dp)
+                        .navigationBarsPadding()
+                        .padding(bottom = 16.dp),
+                    shape = RoundedCornerShape(24.dp)
                 ) {
 
-                    Text(
-                        text = "Let's Begin",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
 
-                    Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = "Let's Begin",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
 
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Continue"
-                    )
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                            contentDescription = null
+                        )
+                    }
                 }
             }
         }
-
     }
 }
 
