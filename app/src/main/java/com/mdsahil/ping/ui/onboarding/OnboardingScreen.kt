@@ -10,12 +10,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -116,6 +123,7 @@ fun OnboardingQuestion(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
+            .statusBarsPadding()
             .padding(horizontal = 20.dp)
             .padding(top = 12.dp),
     ){
@@ -127,7 +135,7 @@ fun OnboardingQuestion(
             Image(
                 painter = painterResource(R.drawable.ping_icon),
                 contentDescription = "Ping",
-                modifier = Modifier.size(48.dp),
+                modifier = Modifier.size(56.dp),
                 contentScale = ContentScale.Fit
             )
 
@@ -138,14 +146,14 @@ fun OnboardingQuestion(
                 Text(
                     text = "Ping",
                     color = MaterialTheme.colorScheme.onBackground,
-                    fontSize = 22.sp,
+                    fontSize = 28.sp,
                     fontWeight = FontWeight.SemiBold
                 )
 
                 Text(
                     text = "Your AI companion",
                     color = MaterialTheme.colorScheme.secondary,
-                    fontSize = 13.sp
+                    fontSize = 15.sp
                 )
             }
         }
@@ -213,35 +221,109 @@ fun OnboardingQuestion(
 fun WelcomeMessage(
     name: String
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
     ) {
-        Text(
-            text = "Typing...",
-            color = MaterialTheme.colorScheme.secondary
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+                .padding(horizontal = 20.dp)
+        ) {
 
-        Spacer(modifier = Modifier.height(24.dp))
+            Row(
+                modifier = Modifier.padding(top = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
-        Text(
-            text = "Nice to meet you,",
-            color = MaterialTheme.colorScheme.onBackground
-        )
+                Image(
+                    painter = painterResource(id = R.drawable.ping_icon),
+                    contentDescription = "Ping Icon",
+                    modifier = Modifier.size(56.dp)
+                )
 
-        Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.width(12.dp))
 
-        Text(
-            text = name,
-            color = MaterialTheme.colorScheme.primary,
-            fontWeight = FontWeight.Bold
-        )
+                Column {
+
+                    Text(
+                        text = "Ping",
+                        color = MaterialTheme.colorScheme.onBackground,
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Text(
+                        text = "Your AI companion",
+                        color = Color.Gray,
+                        fontSize = 15.sp
+                    )
+                }
+            }
+
+                    Spacer(modifier = Modifier.height(28.dp))
+
+                    Text(
+                        text = "Ping",
+                        color = Color(0xFFFFC107),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(start = 12.dp, bottom = 6.dp)
+                    )
+
+                    MessageBubble(
+                        message = "Nice to meet you, $name! 👋"
+                    )
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    MessageBubble(
+                        message = "I'm Ping."
+                    )
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    MessageBubble(
+                        message = "I'm here whenever you wantto talk,\n" +
+
+                                "reflect, or just think out loud."
+                    )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Button(
+                onClick = { },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .navigationBarsPadding()
+                    .padding(bottom = 16.dp),
+                shape = RoundedCornerShape(20.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+
+                    Text(
+                        text = "Let's Begin",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+
+                    Spacer(modifier = Modifier.width(4.dp))
+
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                        contentDescription = "Continue"
+                    )
+                }
+            }
+        }
+
     }
 }
-
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

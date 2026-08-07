@@ -38,7 +38,7 @@ fun MessageBubble(
 
         Box(
             modifier = Modifier
-                .widthIn(max = 280.dp)
+                .widthIn(max = 340.dp)
                 .clip(RoundedCornerShape(22.dp))
                 .background(
                     if (isFromUser)
@@ -54,11 +54,11 @@ fun MessageBubble(
                     Color.Black
                 else
                     Color.White,
-                fontSize = 15.sp,
-                lineHeight = 24.sp,
+                fontSize = 17.sp,
+                lineHeight = 26.sp,
                 modifier = Modifier.padding(
-                    horizontal = 18.dp,
-                    vertical = 14.dp
+                    horizontal = 22.dp,
+                    vertical = 16.dp
                 )
             )
         }

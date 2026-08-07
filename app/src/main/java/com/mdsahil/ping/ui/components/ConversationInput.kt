@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -31,14 +32,18 @@ import androidx.compose.ui.graphics.Color
     ) {
 
         Box(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth(),
 
         ) {
 
             OutlinedTextField(
                 value = value,
                 onValueChange = onValueChange,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(64.dp),
+                shape = CircleShape,
                 placeholder = {
                     Text("Reply...")
                 },
@@ -47,7 +52,7 @@ import androidx.compose.ui.graphics.Color
             IconButton(
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
-                        .padding(end = 6.dp)
+                        .padding(end = 12.dp)
                         .size(40.dp)
                         .clip(CircleShape)
                         .background(
