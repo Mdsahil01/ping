@@ -51,6 +51,11 @@ Ping explores how software can recreate that feeling through meaningful conversa
 - APK Generation
 - Android Emulator Testing
 - Physical Device Testing
+- Welcome Experience
+- Personalized Welcome Message
+- Sequential Conversation Animations
+- Typing Indicator Animations
+- Let's Begin Action
 
 
 ### 📱 Current Progress
@@ -59,31 +64,37 @@ Ping explores how software can recreate that feeling through meaningful conversa
 <tr>
 <td align="center"><b>Splash Screen</b></td>
 <td align="center"><b>Conversation-First Onboarding</b></td>
+<td align="center"><b>Welcome Experience</b></td>
 </tr>
 
 <tr>
 <td>
-<a href="screenshots/day5_splash.png">
-<img src="screenshots/day5_splash.png" width="280"/>
+<a href="screenshots/day6_splash.jpg">
+<img src="screenshots/day6_splash.jpg" width="280"/>
 </a>
 </td>
 
 <td>
-<a href="screenshots/day5_onboarding.png">
-<img src="screenshots/day5_onboarding.png" width="280"/>
+<a href="screenshots/day6_onboarding.jpg">
+<img src="screenshots/day6_onboarding.jpg" width="280"/>
+</a>
+</td>
+
+<td>
+<a href="screenshots/day6_welcome.jpg">
+<img src="screenshots/day6_welcome.jpg" width="280"/>
 </a>
 </td>
 </tr>
 </table>
- 
+
 ### 🚧 Current Focus
 
-**Issue #5 — Build the Welcome Experience**
+**Issue #6 — Build the Home Screen Foundation**
 
 
 ### 🔜 Upcoming
 
-- Welcome Experience
 - Home Screen
 - Reflection Conversations
 - Future Self Conversations
@@ -97,17 +108,19 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 # 🏆 Latest Milestone
 
-Ping now delivers its first complete conversation-first onboarding experience.
+Ping now delivers its first complete first-time user journey.
 
 ```text
 Launch App
-      ↓
+↓
 Splash Screen
-      ↓
+↓
 Conversation-First Onboarding
-      ↓
-Personalized Welcome
-      ↓
+↓
+Personalized Welcome Experience
+↓
+Let's Begin
+↓
 (Home Screen — Next Milestone)
 ```
 
@@ -219,14 +232,14 @@ Ping is guided by a set of product principles that shape every interaction.
 - [x] Splash Screen
 - [x] Conversation-First Onboarding
 - [x] Establish Ping Conversation Identity
-- [ ] Welcome Experience
+- [x] Welcome Experience
 - [ ] Home Screen
 - [ ] Reflection Conversations
 - [ ] Future Self Conversations
 - [ ] Search
 - [ ] Profile
 - [ ] Settings
-- 
+
 # 📚 Learning Journey
 
 Ping is not only a product but also a journey toward becoming a professional Android Engineer.
