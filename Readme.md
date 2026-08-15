@@ -56,6 +56,14 @@ Ping explores how software can recreate that feeling through meaningful conversa
 - Sequential Conversation Animations
 - Typing Indicator Animations
 - Let's Begin Action
+- Home Screen Foundation
+- Personalized Home Greeting
+- Reflection Conversation Card
+- Future Self Conversation Card
+- Random Thoughts Conversation Card
+- Bottom Navigation
+- Personalized User Data Flow
+- Welcome → Home Navigation
 
 
 ### 📱 Current Progress
@@ -65,6 +73,7 @@ Ping explores how software can recreate that feeling through meaningful conversa
 <td align="center"><b>Splash Screen</b></td>
 <td align="center"><b>Conversation-First Onboarding</b></td>
 <td align="center"><b>Welcome Experience</b></td>
+<td align="center"><b>Home Screen</b></td>
 </tr>
 
 <tr>
@@ -85,23 +94,27 @@ Ping explores how software can recreate that feeling through meaningful conversa
 <img src="screenshots/day6_welcome.jpg" width="280"/>
 </a>
 </td>
+
+<td>
+<a href="screenshots/day7_home.jpeg">
+<img src="screenshots/day7_home.jpeg" width="280"/>
+</a>
+</td>
 </tr>
 </table>
 
 ### 🚧 Current Focus
 
-**Issue #6 — Build the Home Screen Foundation**
-
+**Issue #7 — Persist User Onboarding Data**
 
 ### 🔜 Upcoming
 
-- Home Screen
+- Persist User Onboarding Data
 - Reflection Conversations
 - Future Self Conversations
 - Search
 - Profile
 - Settings
-- Local Data Storage
 - AI Integration
 
 ---
@@ -121,10 +134,10 @@ Personalized Welcome Experience
 ↓
 Let's Begin
 ↓
-(Home Screen — Next Milestone)
+Personalized Home Screen
 ```
 
-The onboarding now establishes Ping's identity through thoughtful conversation rather than traditional setup screens.
+Ping now delivers a complete first-time user journey from launch through the personalized Home Screen.
 
 The experience has been tested successfully on both the Android Emulator and a physical Android device.
 ---
@@ -233,7 +246,7 @@ Ping is guided by a set of product principles that shape every interaction.
 - [x] Conversation-First Onboarding
 - [x] Establish Ping Conversation Identity
 - [x] Welcome Experience
-- [ ] Home Screen
+- [x] Home Screen
 - [ ] Reflection Conversations
 - [ ] Future Self Conversations
 - [ ] Search
