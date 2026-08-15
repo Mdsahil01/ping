@@ -20,11 +20,16 @@ fun AppNavigation(){
             SplashScreen(navController)
         }
 
-        composable(Routes.HOME){
-            HomeScreen()
+        composable(
+            route = Routes.HOME
+        ) { backStackEntry ->
+
+            val name = backStackEntry.arguments?.getString("name") ?: ""
+
+            HomeScreen(name = name)
         }
         composable(Routes.ONBOARDING) {
-            OnboardingScreen()
+            OnboardingScreen(navController)
         }
 
     }

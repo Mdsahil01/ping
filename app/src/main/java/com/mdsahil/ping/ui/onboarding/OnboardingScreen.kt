@@ -43,9 +43,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.mdsahil.ping.ui.components.ConversationInput
 import com.mdsahil.ping.ui.components.MessageBubble
 import com.mdsahil.ping.ui.components.TypingIndicator
+import com.mdsahil.ping.ui.navigation.Routes
 import com.mdsahil.ping.ui.theme.PingTheme
 import kotlinx.coroutines.delay
 
@@ -53,7 +56,9 @@ import kotlinx.coroutines.delay
 
 
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(
+    navController: NavController
+) {
 
     var name = remember { mutableStateOf("") }
     var showWelcome by remember { mutableStateOf(false) }
@@ -100,7 +105,8 @@ fun OnboardingScreen() {
     } else {
 
         WelcomeMessage(
-            name = name.value
+            name = name.value,
+            navController = navController
         )
 
     }
@@ -124,6 +130,7 @@ fun OnboardingQuestion(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
+            .navigationBarsPadding()
             .padding(horizontal = 20.dp)
             .padding(top = 12.dp),
     ){
@@ -219,7 +226,8 @@ fun OnboardingQuestion(
 
 @Composable
 fun WelcomeMessage(
-    name: String
+    name: String,
+    navController: NavController
 ) {
     var showTyping1 by remember { mutableStateOf(true) }
     var showMessage1 by remember { mutableStateOf(false) }
@@ -265,6 +273,7 @@ fun WelcomeMessage(
                 .fillMaxSize()
                 .statusBarsPadding()
                 .padding(horizontal = 20.dp)
+                .navigationBarsPadding()
         ) {
 
             Row(
@@ -339,8 +348,7 @@ fun WelcomeMessage(
             AnimatedVisibility(showMessage3) {
 
                 MessageBubble(
-                    message = "I'm here whenever you wantto talk,\n" +
-                            "reflect, or just think out loud."
+                    message = "I'm here whenever you want to talk, reflect, or just think out loud."
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
@@ -349,7 +357,13 @@ fun WelcomeMessage(
 
                 Button(
                     onClick = {
-                        // Navigation later
+                        navController.navigate(
+                            Routes.HOME.replace("{name}", name)
+                        ) {
+                            popUpTo(Routes.ONBOARDING) {
+                                inclusive = true
+                            }
+                        }
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -386,6 +400,6 @@ fun WelcomeMessage(
 @Composable
 fun OnboardingScreenPreview() {
     PingTheme {
-        OnboardingScreen()
+        OnboardingScreen(navController = rememberNavController())
     }
 }
