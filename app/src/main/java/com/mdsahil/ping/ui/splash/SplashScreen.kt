@@ -29,11 +29,14 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.mdsahil.ping.R
+import com.mdsahil.ping.data.UserPreferencesRepository
 import com.mdsahil.ping.ui.navigation.Routes
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.io.path.Path
 import kotlin.io.path.moveTo
@@ -42,6 +45,8 @@ import kotlin.io.path.moveTo
 fun SplashScreen(
     navController: NavController
 ){
+    val context = LocalContext.current
+    val repository = UserPreferencesRepository(context)
     val scale = remember { Animatable(0.92f) }
     val alpha = remember { Animatable(0f) }
     val progress = remember { Animatable(0f) }
@@ -73,9 +78,26 @@ fun SplashScreen(
 
         delay(2200)
 
-        navController.navigate(Routes.ONBOARDING) {
-            popUpTo(Routes.SPLASH) {
-                inclusive = true
+        val onboardingCompleted = repository.onboardingCompleted.first()
+
+        if (onboardingCompleted) {
+
+            val savedName = repository.userName.first()
+
+            navController.navigate(
+                Routes.HOME.replace("{name}", savedName ?: "")
+            ) {
+                popUpTo(Routes.SPLASH) {
+                    inclusive = true
+                }
+            }
+
+        } else {
+
+            navController.navigate(Routes.ONBOARDING) {
+                popUpTo(Routes.SPLASH) {
+                    inclusive = true
+                }
             }
         }
     }
