@@ -64,6 +64,7 @@ Ping explores how software can recreate that feeling through meaningful conversa
 - Bottom Navigation
 - Personalized User Data Flow
 - Welcome → Home Navigation
+-  Persist User Onboarding Data
 
 
 ### 📱 Current Progress
@@ -105,11 +106,12 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 ### 🚧 Current Focus
 
-**Issue #7 — Persist User Onboarding Data**
+**Issue #8 — Complete User Message Bubble in Onboarding**
+
+Complete the conversation-first onboarding experience by displaying the user's entered name as a yellow user-side message bubble before Ping continues the Welcome Experience.
 
 ### 🔜 Upcoming
 
-- Persist User Onboarding Data
 - Reflection Conversations
 - Future Self Conversations
 - Search
@@ -124,7 +126,7 @@ Ping explores how software can recreate that feeling through meaningful conversa
 Ping now delivers its first complete first-time user journey.
 
 ```text
-Launch App
+First Launch
 ↓
 Splash Screen
 ↓
@@ -134,10 +136,24 @@ Personalized Welcome Experience
 ↓
 Let's Begin
 ↓
-Personalized Home Screen
+Save User Data
+↓
+Home Screen
+
+Next Launch
+↓
+Splash Screen
+↓
+Read Saved User Data
+↓
+Home Screen
 ```
 
-Ping now delivers a complete first-time user journey from launch through the personalized Home Screen.
+Ping now remembers users across app restarts.
+
+On the first launch, users complete the conversation-first onboarding experience. Their name and onboarding completion state are persisted locally using Jetpack DataStore Preferences.
+
+On subsequent launches, Ping reads the saved data and takes returning users directly to the Home Screen.
 
 The experience has been tested successfully on both the Android Emulator and a physical Android device.
 ---
@@ -150,6 +166,7 @@ The experience has been tested successfully on both the Android Emulator and a p
 - Jetpack Compose
 - Material 3
 - Navigation Compose
+- Jetpack DataStore Preferences
 - Android Studio
 - Git
 - GitHub
@@ -247,6 +264,8 @@ Ping is guided by a set of product principles that shape every interaction.
 - [x] Establish Ping Conversation Identity
 - [x] Welcome Experience
 - [x] Home Screen
+- [x] Persist User Onboarding Data
+- [ ] Complete User Message Bubble in Onboarding
 - [ ] Reflection Conversations
 - [ ] Future Self Conversations
 - [ ] Search
