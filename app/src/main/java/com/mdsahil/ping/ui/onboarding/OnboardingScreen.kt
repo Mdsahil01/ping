@@ -1,5 +1,6 @@
 package com.mdsahil.ping.ui.onboarding
 
+import android.R.attr.onClick
 import androidx.compose.animation.AnimatedVisibility
 import com.mdsahil.ping.R
 import androidx.compose.foundation.Image
@@ -55,7 +56,9 @@ import com.mdsahil.ping.ui.navigation.Routes
 import com.mdsahil.ping.ui.theme.PingTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.imePadding
 
 @Composable
 fun OnboardingScreen(
@@ -63,12 +66,26 @@ fun OnboardingScreen(
 ) {
 
     var name = remember { mutableStateOf("") }
-    var showWelcome by remember { mutableStateOf(false) }
+    var submitted by remember { mutableStateOf(false) }
+    var submittedName  by remember { mutableStateOf("") }
     var showTyping1 by remember { mutableStateOf(true) }
     var showMessage1 by remember { mutableStateOf(false) }
     var showTyping2 by remember { mutableStateOf(false) }
     var showMessage2 by remember { mutableStateOf(false) }
     var showInput by remember { mutableStateOf(false) }
+    var showTyping3 by remember { mutableStateOf(false) }
+    var showMessage3 by remember { mutableStateOf(false) }
+
+    var showTyping4 by remember { mutableStateOf(false) }
+    var showMessage4 by remember { mutableStateOf(false) }
+
+    var showTyping5 by remember { mutableStateOf(false) }
+    var showMessage5 by remember { mutableStateOf(false) }
+
+    var showButton by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val repository = UserPreferencesRepository(context)
 
     LaunchedEffect(Unit) {
 
@@ -86,45 +103,102 @@ fun OnboardingScreen(
         delay(250)
         showInput = true
     }
+    LaunchedEffect(submitted) {
+        if (submitted) {
+            delay(500)
+            showTyping3 = true
 
-    if (!showWelcome) {
+            delay(800)
+            showTyping3 = false
+            showMessage3 = true
 
-        OnboardingQuestion(
-            name = name.value,
-            onNameChange = {
-                name.value = it
-            },
-            onContinue = {
-                showWelcome = true
-            },
-            showTyping1 = showTyping1,
-            showMessage1 = showMessage1,
-            showTyping2 = showTyping2,
-            showMessage2 = showMessage2,
-            showInput = showInput
-        )
+            delay(700)
+            showTyping4 = true
 
-    } else {
+            delay(800)
+            showTyping4 = false
+            showMessage4 = true
 
-        WelcomeMessage(
-            name = name.value,
-            navController = navController
-        )
+            delay(700)
+            showTyping5 = true
 
+            delay(800)
+            showTyping5 = false
+            showMessage5 = true
+
+            delay(500)
+            showButton = true
+        }
     }
-}
 
+
+    OnboardingQuestion(
+        name = name.value,
+        onNameChange = {
+            name.value = it
+        },
+        onContinue = {
+
+            submittedName = name.value
+            name.value = ""
+
+            scope.launch {
+                submitted = true
+                delay(1000)
+            }
+        },
+
+        onBegin = {
+            scope.launch {
+                repository.saveUserName(name = submittedName)
+                repository.completeOnboarding()
+
+                navController.navigate(
+                    Routes.HOME.replace("{name}", submittedName)
+                ) {
+                    popUpTo(Routes.ONBOARDING) {
+                        inclusive = true
+                    }
+                }
+            }
+        },
+        submitted = submitted,
+        showTyping3 = showTyping3,
+        showMessage3 = showMessage3,
+        showTyping4 = showTyping4,
+        showMessage4 = showMessage4,
+        showTyping5 = showTyping5,
+        showMessage5 = showMessage5,
+        showButton = showButton,
+        showTyping1 = showTyping1,
+        showMessage1 = showMessage1,
+        showTyping2 = showTyping2,
+        showMessage2 = showMessage2,
+        showInput = showInput,
+        submittedName = submittedName,
+    )
+}
 
 @Composable
 fun OnboardingQuestion(
     name: String,
     onNameChange: (String) -> Unit,
     onContinue: () -> Unit,
+    onBegin: () -> Unit,
     showTyping1: Boolean,
     showMessage1: Boolean,
     showTyping2: Boolean,
     showMessage2: Boolean,
-    showInput: Boolean
+    showInput: Boolean,
+    submitted: Boolean,
+    submittedName : String,
+    showTyping3: Boolean,
+    showMessage3: Boolean,
+    showTyping4: Boolean,
+    showMessage4: Boolean,
+    showTyping5: Boolean,
+    showMessage5: Boolean,
+    showButton: Boolean,
 ) {
 
     Column(
@@ -166,50 +240,128 @@ fun OnboardingQuestion(
                 )
             }
         }
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(
+                top = 28.dp,
+                bottom = 16.dp
+            )
+        ) {
 
-        Spacer(modifier = Modifier.height(28.dp))
+            item {
+                AnimatedVisibility(showTyping1) {
+                    TypingIndicator()
+                }
+            }
 
-        AnimatedVisibility(showTyping1) {
-            TypingIndicator()
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        AnimatedVisibility(showMessage1 || showMessage2) {
-
-            Column {
-
-                Text(
-                    text = "Ping",
-                    color = MaterialTheme.colorScheme.primary,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(start = 12.dp, bottom = 6.dp)
-                )
-
-                if (showMessage1) {
+            item {
+                AnimatedVisibility(showMessage1) {
                     MessageBubble(
                         message = "I don't like calling people \"User.\""
                     )
                 }
+            }
 
-                if (showTyping2) {
-                    Spacer(modifier = Modifier.height(8.dp))
-
+            item {
+                AnimatedVisibility(showTyping2) {
                     TypingIndicator()
                 }
+            }
 
-                if (showMessage2) {
-                    Spacer(modifier = Modifier.height(8.dp))
-
+            item {
+                AnimatedVisibility(showMessage2) {
                     MessageBubble(
                         message = "What should I call you?"
                     )
                 }
             }
+
+            item {
+                AnimatedVisibility(submitted) {
+                    MessageBubble(
+                        message = submittedName,
+                        isFromUser = true
+                    )
+                }
+            }
+
+            item {
+                AnimatedVisibility(showTyping3) {
+                    TypingIndicator()
+                }
+            }
+
+            item {
+                AnimatedVisibility(showMessage3) {
+                    MessageBubble(
+                        message = "Nice to meet you, $submittedName! 👋"
+                    )
+                }
+            }
+
+            item {
+                AnimatedVisibility(showTyping4) {
+                    TypingIndicator()
+                }
+            }
+
+            item {
+                AnimatedVisibility(showMessage4) {
+                    MessageBubble(
+                        message = "I'm Ping."
+                    )
+                }
+            }
+
+            item {
+                AnimatedVisibility(showTyping5) {
+                    TypingIndicator()
+                }
+            }
+
+            item {
+                AnimatedVisibility(showMessage5) {
+                    MessageBubble(
+                        message = "I'm here whenever you want to talk, reflect, or just think out loud."
+                    )
+                }
+            }
+        }
+        AnimatedVisibility(showButton) {
+            Button(
+                onClick = onBegin,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(72.dp)
+                    .padding(bottom = 16.dp),
+                shape = RoundedCornerShape(24.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Let's Begin",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                        contentDescription = null
+                    )
+                }
+            }
         }
 
-        AnimatedVisibility(showInput) {
+        AnimatedVisibility(
+            visible = showInput && !submitted,
+            modifier = Modifier.imePadding()
+        ) {
             ConversationInput(
                 value = name,
                 onValueChange = onNameChange,
@@ -220,190 +372,6 @@ fun OnboardingQuestion(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-    }
-}
-
-
-
-
-@Composable
-fun WelcomeMessage(
-    name: String,
-    navController: NavController
-) {
-    val context = LocalContext.current
-    val repository = UserPreferencesRepository(context)
-    val scope = rememberCoroutineScope()
-
-    var showTyping1 by remember { mutableStateOf(true) }
-    var showMessage1 by remember { mutableStateOf(false) }
-
-    var showTyping2 by remember { mutableStateOf(false) }
-    var showMessage2 by remember { mutableStateOf(false) }
-
-    var showTyping3 by remember { mutableStateOf(false) }
-    var showMessage3 by remember { mutableStateOf(false) }
-
-    var showButton by remember { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-
-        delay(800)
-        showTyping1 = false
-        showMessage1 = true
-
-        delay(700)
-        showTyping2 = true
-
-        delay(800)
-        showTyping2 = false
-        showMessage2 = true
-
-        delay(700)
-        showTyping3 = true
-
-        delay(800)
-        showTyping3 = false
-        showMessage3 = true
-
-        delay(500)
-        showButton = true
-    }
-
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .statusBarsPadding()
-                .padding(horizontal = 20.dp)
-                .navigationBarsPadding()
-        ) {
-
-            Row(
-                modifier = Modifier.padding(top = 20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-
-                Image(
-                    painter = painterResource(id = R.drawable.ping_icon),
-                    contentDescription = "Ping Icon",
-                    modifier = Modifier.size(56.dp)
-                )
-
-                Spacer(modifier = Modifier.width(12.dp))
-
-                Column {
-
-                    Text(
-                        text = "Ping",
-                        color = MaterialTheme.colorScheme.onBackground,
-                        fontSize = 28.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Text(
-                        text = "Your AI companion",
-                        color = Color.Gray,
-                        fontSize = 15.sp
-                    )
-                }
-            }
-
-                    Spacer(modifier = Modifier.height(28.dp))
-
-                    Text(
-                        text = "Ping",
-                        color = Color(0xFFFFC107),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(start = 12.dp, bottom = 6.dp)
-                    )
-
-            AnimatedVisibility(showTyping1) {
-                TypingIndicator()
-            }
-
-            AnimatedVisibility(showMessage1) {
-                MessageBubble(
-                    message = "Nice to meet you, $name! 👋"
-                )
-            }
-
-                    Spacer(modifier = Modifier.height(4.dp))
-
-            AnimatedVisibility(showTyping2) {
-                TypingIndicator()
-            }
-
-            AnimatedVisibility(showMessage2) {
-
-                MessageBubble(
-                    message = "I'm Ping."
-                )
-            }
-
-                    Spacer(modifier = Modifier.height(4.dp))
-
-            AnimatedVisibility(showTyping3) {
-                TypingIndicator()
-            }
-
-            AnimatedVisibility(showMessage3) {
-
-                MessageBubble(
-                    message = "I'm here whenever you want to talk, reflect, or just think out loud."
-                )
-            }
-            Spacer(modifier = Modifier.weight(1f))
-
-            AnimatedVisibility(visible =  showButton) {
-
-                Button(
-                    onClick = {
-                        scope.launch {
-                            repository.saveUserName(name)
-                            repository.completeOnboarding()
-
-                            navController.navigate(
-                                Routes.HOME.replace("{name}", name)
-                            ) {
-                                popUpTo(Routes.ONBOARDING) {
-                                    inclusive = true
-                                }
-                            }
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(72.dp)
-                        .navigationBarsPadding()
-                        .padding(bottom = 16.dp),
-                    shape = RoundedCornerShape(24.dp)
-                ) {
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-
-                        Text(
-                            text = "Let's Begin",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold
-                        )
-
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                            contentDescription = null
-                        )
-                    }
-                }
-            }
-        }
     }
 }
 
