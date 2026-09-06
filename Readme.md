@@ -106,9 +106,11 @@ Ping explores how software can recreate that feeling through meaningful conversa
 
 ### 🚧 Current Focus
 
-**Issue #8 — Complete User Message Bubble in Onboarding**
+**Issue #9 — Build Reflection Conversation**
 
-Complete the conversation-first onboarding experience by displaying the user's entered name as a yellow user-side message bubble before Ping continues the Welcome Experience.
+Build Ping's first meaningful conversation experience after onboarding: Reflection.
+
+The goal is to allow the user to enter a reflection conversation from the Home screen and have Ping guide the interaction through thoughtful, conversational prompts.
 
 ### 🔜 Upcoming
 
@@ -121,9 +123,11 @@ Complete the conversation-first onboarding experience by displaying the user's e
 
 ---
 
-# 🏆 Latest Milestone
+### Latest Milestone
 
-Ping now delivers its first complete first-time user journey.
+Ping now delivers a complete conversation-first onboarding experience with persistent user data and a continuous user interaction flow.
+
+**Current focus:** Building Ping's first meaningful post-onboarding conversation — Reflection.
 
 ```text
 First Launch
@@ -265,7 +269,7 @@ Ping is guided by a set of product principles that shape every interaction.
 - [x] Welcome Experience
 - [x] Home Screen
 - [x] Persist User Onboarding Data
-- [ ] Complete User Message Bubble in Onboarding
+- [x] Complete User Message & Continuous Onboarding Conversation
 - [ ] Reflection Conversations
 - [ ] Future Self Conversations
 - [ ] Search
